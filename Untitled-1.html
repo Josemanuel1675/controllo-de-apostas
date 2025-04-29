@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Controlo de Apostas</title>
+    <style>
+        /* Adicionando a imagem de fundo à página */
+        body {
+            background-image: url('TRANSFERIR.jpg'); /* Caminho da imagem na mesma pasta do arquivo HTML */
+            background-size: cover; /* A imagem cobrirá toda a tela */
+            background-position: center; /* Posiciona a imagem no centro da tela */
+            background-attachment: fixed; /* A imagem de fundo ficará fixa quando o usuário rolar a página */
+            font-family: Arial, sans-serif; /* Fonte padrão */
+            color: white; /* Cor do texto para garantir visibilidade */
+        }
+
+        /* Contêiner para alinhar as tabelas lado a lado */
+        .tabelas-container {
+            display: flex;
+            justify-content: space-between; /* Espaça as tabelas igualmente */
+            gap: 20px; /* Espaçamento entre as tabelas */
+        }
+
+        /* Estilo geral da tabela */
+        table {
+            width: 100%;  /* A tabela ocupa toda a largura disponível */
+            border-collapse: collapse;  /* Colapsa as bordas das células */
+            background-color: rgba(255, 255, 255, 0.8); /* Cor de fundo semitransparente para a tabela */
+        }
+
+        th, td {
+            border: 1px solid rgb(0, 0, 0);  /* Borda para as células */
+            padding: 3px;  /* Reduzindo o espaçamento interno */
+            text-align: center;  /* Alinha o texto no centro */
+            font-size: 14px; /* Reduzindo o tamanho da fonte */
+        }
+
+        td {
+            height: 30px; /* Define uma altura para as células */
+            background-color: rgba(242, 242, 242, 0.8);  /* Cor de fundo para as células (cinza claro) com transparência */
+        }
+
+        input {
+            width: 100%;  /* Faz o campo de entrada ocupar toda a largura da célula */
+            padding: 5px;  /* Espaçamento dentro do campo de entrada */
+            box-sizing: border-box;  /* Garante que o padding não ultrapasse os limites da célula */
+            background-color: rgba(255, 255, 255, 0.8);  /* Campo de entrada semitransparente */
+        }
+
+        /* Estilo para a primeira tabela, para deixá-la menor e mais à esquerda */
+        .tabela-controlo {
+            font-size: 14px; /* Menor tamanho de fonte */
+        }
+
+        /* Estilo para a nova tabela (2 colunas e 4 linhas) */
+        .nova-tabela {
+            font-size: 14px; /* Menor tamanho de fonte */
+        }
+
+        /* Removendo cabeçalhos da nova tabela */
+        .nova-tabela th {
+            display: none;
+        }
+
+        /* Ajustando a tabela de 10x50 para ocupar toda a largura da tela */
+        #tabela-10x50 {
+            width: 100%;
+            table-layout: fixed; /* Define um layout fixo para garantir que a tabela se ajuste corretamente */
+        }
+
+        #tabela-10x50 th, #tabela-10x50 td {
+            width: 10%; /* Cada coluna ocupará 10% da largura da tabela */
+        }
+    </style>
+</head>
+<body>
+
+<h1>Controlo de Apostas</h1>
+
+<!-- Contêiner que vai alinhar as tabelas lado a lado -->
+<div class="tabelas-container">
+
+    <!-- Primeira Tabela (2 colunas) -->
+    <table class="tabela-controlo">
+        <tr>
+            <th>APOSTAS POR TIP</th>
+            <th>LUCRO TOTAL</th>
+        </tr>
+        <tr>
+            <td>BANCA INICIAL</td>
+            <td><input type="text" placeholder="Digite a banca inicial"></td>
+        </tr>
+        <tr>
+            <td>BANCA ATUAL</td>
+            <td><input type="text" placeholder="Digite a banca atual"></td>
+        </tr>
+        <tr>
+            <td>% POR TIP</td>
+            <td><input type="text" placeholder="Digite o % por tip"></td>
+        </tr>
+        <tr>
+            <td>STAKE PRÓXIMA TIP</td>
+            <td><input type="text" placeholder="Digite a stake próxima tip"></td>
+        </tr>
+    </table>
+
+    <!-- Nova Tabela (2 colunas e 4 linhas) -->
+    <table class="nova-tabela">
+        <tr>
+            <td><input type="text" placeholder="Digite algo"></td>
+            <td><input type="text" placeholder="Digite algo"></td>
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="Digite algo"></td>
+            <td><input type="text" placeholder="Digite algo"></td>
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="Digite algo"></td>
+            <td><input type="text" placeholder="Digite algo"></td>
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="Digite algo"></td>
+            <td><input type="text" placeholder="Digite algo"></td>
+        </tr>
+    </table>
+
+</div> <!-- Fim do contêiner -->
+
+<!-- Segunda Tabela (10 colunas por 50 linhas) -->
+<h2>Tabela de 10 Colunas e 50 Linhas</h2>
+<table id="tabela-10x50">
+</table>
+
+<script>
+    // Nomes específicos para cada uma das 10 colunas
+    const nomesDasColunas = [
+        "DATA", "HORA", "ENCONTRO", "TIPO DE APOSTA", "ODDS", 
+        "VALOR APOSTADO", "RESULTADO", "TOTAL APOSTA", "LUCRO", "VALORES"
+    ];
+
+    // Função para gerar a tabela 10x50
+    function gerarTabela() {
+        const tabela = document.getElementById("tabela-10x50");
+
+        // Criando a primeira linha com cabeçalhos (10 colunas)
+        const cabecalho = document.createElement("tr");
+        for (let c = 0; c < 10; c++) {
+            const cabecalhoCelula = document.createElement("th");
+            cabecalhoCelula.textContent = nomesDasColunas[c]; // Usando o nome da coluna do array
+            cabecalho.appendChild(cabecalhoCelula);
+        }
+        tabela.appendChild(cabecalho);
+
+        // Criando 50 linhas
+        for (let i = 0; i < 50; i++) {
+            const linha = document.createElement("tr");
+            for (let j = 0; j < 10; j++) {
+                const celula = document.createElement("td");
+                const input = document.createElement("input");
+                input.setAttribute("type", "text");
+                input.setAttribute("placeholder", "Entrada");
+                
+                // Atribuindo evento de input para as células que precisam calcular o total apostado
+                if (j === 4 || j === 5) {
+                    input.addEventListener('input', calcularTotalApostaELucro);
+                }
+
+                celula.appendChild(input);
+                linha.appendChild(celula);
+            }
+            tabela.appendChild(linha);
+        }
+    }
+
+    // Função para calcular o TOTAL APOSTADO e o LUCRO
+    function calcularTotalApostaELucro() {
+        const tabela = document.getElementById("tabela-10x50");
+        const linhas = tabela.getElementsByTagName("tr");
+
+        for (let i = 1; i < linhas.length; i++) { // começa de 1 para pular o cabeçalho
+            const linha = linhas[i];
+            const celulas = linha.getElementsByTagName("td");
+
+            const oddsInput = celulas[4].getElementsByTagName("input")[0];
+            const valorApostadoInput = celulas[5].getElementsByTagName("input")[0];
+            const totalApostaInput = celulas[7].getElementsByTagName("input")[0];
+            const lucroInput = celulas[8].getElementsByTagName("input")[0];
+
+            const odds = parseFloat(oddsInput.value) || 0; // Usa 0 caso o valor não seja válido
+            const valorApostado = parseFloat(valorApostadoInput.value) || 0; // Usa 0 caso o valor não seja válido
+
+            // Calcula o total apostado
+            const totalAposta = odds * valorApostado;
+            totalApostaInput.value = totalAposta.toFixed(2); // Exibe o total apostado com duas casas decimais
+
+            // Calcula o lucro (TOTAL APOSTA - VALOR APOSTADO)
+            const lucro = totalAposta - valorApostado;
+            lucroInput.value = lucro.toFixed(2); // Exibe o lucro com duas casas decimais
+        }
+    }
+
+    // Chama a função para gerar a tabela
+    gerarTabela();
+</script>
+
+</body>
+</html>
