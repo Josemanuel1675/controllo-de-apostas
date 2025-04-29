@@ -12,6 +12,8 @@
             background-attachment: fixed; /* A imagem de fundo ficará fixa quando o usuário rolar a página */
             font-family: Arial, sans-serif; /* Fonte padrão */
             color: white; /* Cor do texto para garantir visibilidade */
+            margin: 0;
+            padding: 0;
         }
 
         /* Contêiner para alinhar as tabelas lado a lado */
@@ -19,18 +21,20 @@
             display: flex;
             justify-content: space-between; /* Espaça as tabelas igualmente */
             gap: 20px; /* Espaçamento entre as tabelas */
+            padding: 20px;
         }
 
         /* Estilo geral da tabela */
         table {
-            width: 100%;  /* A tabela ocupa toda a largura disponível */
+            width: 45%;  /* A tabela ocupa 45% da largura disponível */
             border-collapse: collapse;  /* Colapsa as bordas das células */
             background-color: rgba(255, 255, 255, 0.8); /* Cor de fundo semitransparente para a tabela */
+            margin: 0; /* Remove margens */
         }
 
         th, td {
             border: 1px solid rgb(0, 0, 0);  /* Borda para as células */
-            padding: 3px;  /* Reduzindo o espaçamento interno */
+            padding: 5px;  /* Reduzindo o espaçamento interno */
             text-align: center;  /* Alinha o texto no centro */
             font-size: 14px; /* Reduzindo o tamanho da fonte */
         }
@@ -45,11 +49,6 @@
             padding: 5px;  /* Espaçamento dentro do campo de entrada */
             box-sizing: border-box;  /* Garante que o padding não ultrapasse os limites da célula */
             background-color: rgba(255, 255, 255, 0.8);  /* Campo de entrada semitransparente */
-        }
-
-        /* Estilo para a primeira tabela, para deixá-la menor e mais à esquerda */
-        .tabela-controlo {
-            font-size: 14px; /* Menor tamanho de fonte */
         }
 
         /* Estilo para a nova tabela (2 colunas e 4 linhas) */
@@ -71,11 +70,12 @@
         #tabela-10x50 th, #tabela-10x50 td {
             width: 10%; /* Cada coluna ocupará 10% da largura da tabela */
         }
+
     </style>
 </head>
 <body>
 
-<h1>Controlo de Apostas</h1>
+<h1 style="text-align:center;">Controlo de Apostas</h1>
 
 <!-- Contêiner que vai alinhar as tabelas lado a lado -->
 <div class="tabelas-container">
@@ -127,7 +127,7 @@
 </div> <!-- Fim do contêiner -->
 
 <!-- Segunda Tabela (10 colunas por 50 linhas) -->
-<h2>Tabela de 10 Colunas e 50 Linhas</h2>
+<h2 style="text-align:center;">Tabela de 10 Colunas e 50 Linhas</h2>
 <table id="tabela-10x50">
 </table>
 
